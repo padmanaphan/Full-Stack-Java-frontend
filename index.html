@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DockDash - Home</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#4b0082,#6a11cb,#2575fc);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        .container{
+            width:80%;
+            background:rgba(255,255,255,0.12);
+            backdrop-filter:blur(12px);
+            padding:45px;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.4);
+            text-align:center;
+        }
+
+        h1{
+            color:#ffffff;
+            font-size:45px;
+            margin-bottom:20px;
+        }
+
+        h2{
+            color:#ffd700;
+            margin-bottom:20px;
+        }
+
+        p{
+            color:white;
+            font-size:18px;
+            line-height:1.9;
+            text-align:justify;
+        }
+
+        button{
+            margin-top:35px;
+            padding:15px 45px;
+            border:none;
+            border-radius:30px;
+            background:#ff9800;
+            color:white;
+            font-size:20px;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#ff5722;
+            transform:scale(1.05);
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>DockDash</h1>
+
+<h2>Warehouse Loading Bay Coordinator</h2>
+
+<p>
+
+DockDash is an intelligent Warehouse Loading Bay Coordination System developed
+using Spring Boot, REST APIs, Spring Security, JWT Authentication, Hibernate,
+and MySQL. The system manages warehouse loading bays, shipment scheduling,
+appointments, dock activity logs, and user management.
+
+The application provides secure role-based access for Logistics Coordinators,
+Dock Managers, Warehouse Operatives, and Carrier Partners. It enables users to
+schedule appointments, monitor loading bay availability, track shipments,
+record dock activities, and generate warehouse analytics.
+
+DockDash follows a layered architecture consisting of Controllers, Services,
+Repositories, and Entity classes, ensuring modularity, maintainability, and
+scalability. The system improves warehouse efficiency, minimizes waiting time,
+optimizes bay utilization, and simplifies logistics management.
+
+</p>
+
+<a href="dockdashregister.html">
+<button>ENTER</button>
+</a>
+
+</div>
+
+</body>
+</html>

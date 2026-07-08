@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DockDash Login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#4b0082,#6a11cb,#2575fc);
+}
+
+.login-box{
+width:400px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+color:#4b0082;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#ff9800;
+color:white;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff5722;
+}
+
+p{
+text-align:center;
+margin-top:20px;
+}
+
+a{
+text-decoration:none;
+color:#4b0082;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h1>Login</h1>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="loginUser()">LOGIN</button>
+
+<p>
+Don't have an account?
+<a href="dockdashregister.html">Register Here</a>
+</p>
+
+</div>
+
+<script>
+
+function loginUser(){
+
+const user = {
+
+username: document.getElementById("username").value,
+
+password: document.getElementById("password").value
+
+};
+
+fetch("https://full-stack-java-backend-1.onrender.com/api/auth/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify(user)
+
+})
+
+.then(response => {
+
+if(response.ok){
+return response.json();
+}
+
+throw new Error("Invalid Username or Password");
+
+})
+.then(data => {
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("username", data.username);
+    localStorage.setItem("role", data.role);
+    alert("Login Successful");
+    window.location.href = "dockdashdashboard.html";
+})
+
+.catch(error => {
+
+alert(error.message);
+
+console.log(error);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
