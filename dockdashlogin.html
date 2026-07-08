@@ -8,68 +8,136 @@
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#4b0082,#6a11cb,#2575fc);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #1e0030, #360763, #093481);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .login-box{
-width:400px;
-background:white;
-padding:40px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    width:400px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding:50px 40px;
+    border-radius:24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 h1{
-text-align:center;
-margin-bottom:30px;
-color:#4b0082;
+    text-align:center;
+    margin-bottom:30px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 input{
-width:100%;
-padding:15px;
-margin-bottom:20px;
-border-radius:10px;
-border:1px solid #ccc;
-font-size:16px;
+    width:100%;
+    padding:16px;
+    margin-bottom:20px;
+    border-radius:12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size:16px;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
 }
 
 button{
-width:100%;
-padding:15px;
-background:#ff9800;
-color:white;
-border:none;
-border-radius:30px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
+    width:100%;
+    padding:16px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow: 0 10px 20px rgba(229, 46, 113, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, #e52e71, #ff8a00);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    border-radius: 30px;
+    opacity: 0;
+}
+
+button:hover::before {
+    opacity: 1;
 }
 
 button:hover{
-background:#ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(229, 46, 113, 0.6);
 }
 
 p{
-text-align:center;
-margin-top:20px;
+    text-align:center;
+    margin-top:25px;
+    color: rgba(255,255,255,0.8);
 }
 
 a{
-text-decoration:none;
-color:#4b0082;
-font-weight:bold;
+    text-decoration:none;
+    color: #00d2ff;
+    font-weight:700;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff8a00;
 }
 
 </style>
@@ -107,7 +175,7 @@ password: document.getElementById("password").value
 
 };
 
-fetch("https://full-stack-java-backend-1.onrender.com/api/auth/login",{
+fetch("https://padmanaphan.github.io/Full-Stack-Java-backend/api/auth/login",{
 
 method:"POST",
 
